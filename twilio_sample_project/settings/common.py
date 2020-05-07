@@ -69,7 +69,8 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'bootstrap3',
-    'django_forms_bootstrap'
+    'django_forms_bootstrap',
+    'corsheaders'
 )
 
 LOCAL_APPS = (
@@ -79,14 +80,16 @@ LOCAL_APPS = (
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = (
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 )
 
 ROOT_URLCONF = 'twilio_sample_project.urls'
@@ -141,6 +144,9 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR + '/staticfiles'
 
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Messages settings for Bootstrap 3
