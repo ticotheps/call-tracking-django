@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
@@ -111,7 +111,7 @@ class LeadSourceUpdateView(SuccessMessageMixin, UpdateView):
 
     model = LeadSource
     fields = ['name', 'forwarding_number']
-    success_url = reverse('home')
+    success_url = reverse_lazy('home')
     success_message = 'Lead source successfully updated.'
 
 

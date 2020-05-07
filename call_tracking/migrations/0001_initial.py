@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
                 ('city', models.CharField(max_length=100)),
                 ('state', models.CharField(max_length=2)),
-                ('source', models.ForeignKey(to='call_tracking.LeadSource')),
+                ('source', models.ForeignKey(to='call_tracking.LeadSource', on_delete=models.CASCADE)),
             ],
         ),
     ]

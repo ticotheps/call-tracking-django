@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^call-tracking', include('call_tracking.urls')),
 
     # Include the Django admin
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 ]
