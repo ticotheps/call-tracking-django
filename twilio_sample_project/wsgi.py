@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 
 import os
 from decouple import config
-
 from django.core.wsgi import get_wsgi_application
 
 # Use our production settings as our default settings, which is most secure

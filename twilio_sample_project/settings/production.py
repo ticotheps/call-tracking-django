@@ -5,8 +5,9 @@ Production settings
 '''
 
 from .common import *
+from decouple import config
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # Allow all hosts, so we can run on PaaS's like Heroku
 ALLOWED_HOSTS = ['*']
