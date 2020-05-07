@@ -1,15 +1,16 @@
 from django.conf import settings
 from twilio.rest import Client
+from decouple import config
 
 import os
 
 # Uses credentials defined in TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN
 # environment variables
-account_sid = settings.TWILIO_ACCOUNT_SID
-auth_token = settings.TWILIO_AUTH_TOKEN
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN')
+TWIML_APPLICATION_SID = config('TWIML_APPLICATION_SID')
 
-client = Client(account_sid, auth_token)
-
+client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 def search_phone_numbers(area_code=None):
     """Queries the Twilio REST API to get phone numbers available for puchase"""
@@ -28,6 +29,6 @@ def purchase_phone_number(phone_number):
     # Use a TwiML Application SID so all our numbers use the same voice URL
     number = client.incoming_phone_numbers.create(
         phone_number=phone_number,
-        voice_application_sid=settings.TWIML_APPLICATION_SID)
+        voice_application_sid=TWIML_APPLICATION_SID)
 
     return number
