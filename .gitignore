@@ -4,6 +4,10 @@
 # virtualenv
 venv
 
+# VS Code Settings
+settings.json
+.vscode/
+
 # Staticfiles
 twilio_sample_project/staticfiles
 
