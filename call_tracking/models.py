@@ -60,7 +60,7 @@ class LeadManager(models.Manager):
 
 @python_2_unicode_compatible
 class Lead(models.Model):
-    source = models.ForeignKey(LeadSource)
+    source = models.ForeignKey(LeadSource, on_delete=models.CASCADE)
     phone_number = PhoneNumberField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
