@@ -23,7 +23,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # TwimL Application SID - used to give all our phone numbers the same
 # voice URL setting. Learn more: https://www.twilio.com/blog/2011/06/introducing-twilio-applications-an-easier-way-to-manage-phone-numbers.html
@@ -144,10 +144,6 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR + '/staticfiles'
 
 STATIC_URL = '/static/'
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-DEFAULT_FILE_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 # Messages settings for Bootstrap 3
 
