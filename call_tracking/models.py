@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Count
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from phonenumber_field.modelfields import PhoneNumberField
 
 
