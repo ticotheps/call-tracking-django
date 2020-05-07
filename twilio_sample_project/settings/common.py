@@ -13,20 +13,21 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 from django.core.exceptions import ImproperlyConfigured
 
 import os
+from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'not-so-secret'
+SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = []
 
 # TwimL Application SID - used to give all our phone numbers the same
 # voice URL setting. Learn more: https://www.twilio.com/blog/2011/06/introducing-twilio-applications-an-easier-way-to-manage-phone-numbers.html
-TWIML_APPLICATION_SID = os.environ.get('TWIML_APPLICATION_SID', None)
+TWIML_APPLICATION_SID = config('TWIML_APPLICATION_SID', None)
 if not TWIML_APPLICATION_SID:
     missing_application_sid_message = \
     """
@@ -38,7 +39,7 @@ if not TWIML_APPLICATION_SID:
     """
     raise ImproperlyConfigured(missing_application_sid_message)
 
-TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', None)
+TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID', None)
 if not TWILIO_ACCOUNT_SID:
     missing_account_sid_message = \
     """
@@ -46,7 +47,7 @@ if not TWILIO_ACCOUNT_SID:
     """
     raise ImproperlyConfigured(missing_account_sid_message)
 
-TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN', None)
+TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN', None)
 if not TWILIO_AUTH_TOKEN:
     missing_auth_token_message = \
     """
