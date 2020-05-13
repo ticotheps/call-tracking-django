@@ -70,4 +70,4 @@ docs/_build/
 target/
 
 # Local Django Settings
-settings/local.py
+twilio_sample_project/settings/local.py
