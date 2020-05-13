@@ -70,4 +70,4 @@ docs/_build/
 target/
 
 # Local Django Settings
-local.py
+settings/local.py
